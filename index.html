@@ -1,0 +1,42 @@
+<html ng-app = "chatApp">
+
+    <head>
+        <title>Real-time chat.</title>
+        
+        <script src = "http://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+        
+        <script src = "/socket.io/socket.io.js"></script>
+        <script src = "/script.js"></script>
+        
+        <link rel = "stylesheet" href = "/style.css" type = "text/css"/>
+        
+    </head>
+    
+    <body ng-controller = "mainController" ng-init = "iniSocket()">
+        
+        <div id = "nick_container">
+            <input id = "choose_nick" type = "text" ng-model = "chat.nick" placeholder = "Set your Nickname"></input>
+            <button id = "submit_nick" ng-click = "chat.chooseNick()">Enter Chat</button>
+        </div>
+        
+        <div id = "chat_container" style = "display: none;">
+            <div id = "users_info">
+                <span>Users Online:</span>
+                <div id = "current"></div>
+            </div>
+            <div id = "chat_box">
+                <div id = "chat_area"></div>
+                <form id = "messageForm">
+                    <label>Enter Message</label>
+                    <textarea id = "message" ng-model = "chat.message"></textarea>
+                    <br>
+                    <button type = "submit"ng-click = "chat.submitMessage()">Send Message</button>
+                </form>
+            </div>
+            <div id = "history_box">
+                <a href = "/database">Show database</a>
+            </div>
+        </div>
+    </body>
+    
+</html>
